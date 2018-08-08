@@ -1,0 +1,36 @@
+<div class = "kaminari">
+  <%= paginate @posts %>
+</div>
+
+<table class="table table-hover table-bordered table-striped">
+  <thead  class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Request Type</th>
+      <th scope="col">Identifier</th>
+      <th scope="col">Request</th>
+      <th scope="col">Created On</th>
+      <th scope="col">Response</th>
+      <th scope="col">Blockchain Response</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+        <td scope="row"><%=  post.id %></td>
+        <td><%= post.request_type %></td>
+        <td><%= post.identifier %></td>
+        <td><%= post.request %></td>
+        <td><%= post.created_at %></td>
+        <td><%= post.response %></td>
+        <td><%= post.blockchain_response %></td>
+        <td><%= button_to 'Show', post_path(post), class: "btn btm-sm-pri btn-primary mrg-lft-2", method: :get %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<%= button_to 'Back', root_path, class: "btn btm-sm-pri btn-primary mrg-lft-2", method: :get %>

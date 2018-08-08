@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="py-5 text-center">
+    <h2>Show Organization</h2>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 order-md-1">
+        <div class="row">
+          <div class="col-md-12 mb-3">
+            <label class="badge badge-secondary">Name</label>
+            <%= @organization.name %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12 mb-3">
+            <label class="badge badge-secondary">Registration ID</label>
+            <%= @organization.registration_id %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12 mb-3">
+            <label class="badge badge-secondary">Email</label>
+            <%= @organization.email %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12 mb-3">
+            <label class="badge badge-secondary">Phone Number</label>
+            <%= @organization.phone_number %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12 mb-3">
+            <label class="badge badge-secondary">Address</label>
+            <%= @organization.address %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12 mb-3">
+            <label class="badge badge-secondary">Block created</label>
+            <%= @organization.block_created %>
+          </div>
+        </div>
+
+
+        <%= button_to 'Back', root_path, class: "btn btm-sm-pri btn-primary mrg-lft-2", method: :get %>
+
+        <%= button_to 'Retrieve from Blockchain', retrieve_from_blockchain_organization_path(@organization), class: "btn btm-sm-pri btn-primary mrg-lft-2", method: :post %>
+
+      </form>
+    </div>
+  </div>
+</div>

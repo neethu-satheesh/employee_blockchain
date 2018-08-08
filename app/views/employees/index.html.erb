@@ -1,0 +1,36 @@
+<div class = "kaminari">
+  <%= paginate @employees %>
+</div>
+
+<table class="table table-hover table-bordered table-striped">
+  <thead  class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone Number</th>
+      <th scope="col">Address</th>
+      <th scope="col">Carrer Start Date</th>
+      <th scope="col">Block Created</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @employees.each do |employee| %>
+      <tr>
+        <td scope="row"><%=  employee.id %></td>
+        <td><%= employee.name %></td>
+        <td><%= employee.email %></td>
+        <td><%= employee.phone_number %></td>
+        <td><%= employee.career_start_date %></td>
+        <td><%= employee.address %></td>
+        <td><%= employee.block_created %></td>
+        <td><%= button_to 'Show', employee_path(employee), class: "btn btm-sm-pri btn-primary mrg-lft-2", method: :get %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<%= button_to 'Back', root_path, class: "btn btm-sm-pri btn-primary mrg-lft-2", method: :get %>

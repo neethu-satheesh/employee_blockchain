@@ -1,0 +1,108 @@
+<main role="main">
+
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron">
+    <div class="container">
+      <h3 class="display-3">Search Blockchain</h3>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+      <% if DashboardPolicy.new(current_user).employee_create? %>
+        <div class="col-md-4">
+          <h2>Search Employee</h2>
+          <p> Employee information is obtained from blockchain</p>
+          <p>
+            <%= button_to 'Search Employee', new_employee_path, class: "btn btm-sm-pri btn-primary mrg-lft-2", method: :get %>
+          </p>
+        </div>
+
+        <% if @profile %>
+          <div class="col-md-4">
+            <h2>Show Employee</h2>
+            <p> Employee information is shown</p>
+            <p>
+              <%= button_to 'Show Employee', employee_path(@profile.id), class: "btn btm-sm-pri btn-primary mrg-lft-2", method: :get %>
+            </p>
+          </div>
+
+          <div class="col-md-4">
+            <h2>Create Experience</h2>
+            <p> Create your experience information</p>
+            <p>
+              <%= button_to 'Create Experience', new_employee_experience_path, class: "btn btm-sm-pri btn-primary mrg-lft-2", method: :get %>
+            </p>
+          </div>
+
+          <div class="col-md-4">
+            <h2>List Experiences</h2>
+            <p> See your experience information</p>
+            <p>
+              <%= button_to 'List Experiences', employee_experiences_path, class: "btn btm-sm-pri btn-primary mrg-lft-2", method: :get %>
+            </p>
+          </div>
+        <% end %>
+
+      <% end %>
+
+      <% if DashboardPolicy.new(current_user).organization_create? %>
+        <div class="col-md-4">
+          <h2>Create Organization</h2>
+          <p> Organization information is created and is stored in blockchain</p>
+          <p>
+            <%= button_to 'Create Organization', new_organization_path, class: "btn btm-sm-pri btn-primary mrg-lft-2", method: :get %>
+          </p>
+        </div>
+
+        <% if @profile %>
+          <div class="col-md-4">
+            <h2>Show Organization</h2>
+            <p> Organization information is shown</p>
+            <p>
+              <%= button_to 'Show Organization', organization_path(@profile.id), class: "btn btm-sm-pri btn-primary mrg-lft-2", method: :get %>
+            </p>
+          </div>
+
+          <div class="col-md-4">
+            <h2>Review Experiences</h2>
+            <p> Review the employee experience information</p>
+            <p>
+              <%= button_to 'List Experiences', employee_experiences_path, class: "btn btm-sm-pri btn-primary mrg-lft-2", method: :get %>
+            </p>
+          </div>
+        <% end %>
+
+      <% end %>
+
+      <% if DashboardPolicy.new(current_user).admin? %>
+
+        <div class="col-md-4">
+          <h2>List Employees</h2>
+          <p> Employee information is listed</p>
+          <p>
+            <%= button_to 'List Employees', employees_path, class: "btn btm-sm-pri btn-primary mrg-lft-2", method: :get %>
+          </p>
+        </div>
+
+        <div class="col-md-4">
+          <h2>List Organizations</h2>
+          <p> Employee information is listed</p>
+          <p>
+            <%= button_to 'List Organizations', organizations_path, class: "btn btm-sm-pri btn-primary mrg-lft-2", method: :get %>
+          </p>
+        </div>
+      <% end %>
+
+    </div>
+
+    <hr>
+
+  </div> <!-- /container -->
+
+</main>
+
+<footer class="container">
+  <p>&copy; Company 2017-2018</p>
+</footer>

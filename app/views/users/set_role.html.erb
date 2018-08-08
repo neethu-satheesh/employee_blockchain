@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="py-5 text-center">
+    <h2>Choose your profile</h2>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 order-md-1">
+      <div class="col-md-3 order-md-1">
+        <%= form_for current_user, html: { id: "user"} ,  url: save_role_user_path, method: :post do |f| %>
+              <%= f.hidden_field :role_id, id: 'role_name', value: @employee_role_id %>
+
+          <hr class="mb-4">
+          <%= submit_tag 'Employee', class: "btn btn-primary btn-block", id: 'emp_submit', data: {disable_with: "Sending.."} %>
+        <% end %>
+      </div>
+      <div class="col-md-3 order-md-1">
+        <%= form_for current_user, html: { id: "user"} ,  url: save_role_user_path, method: :post do |f| %>
+              <%= f.hidden_field :role_id, id: 'role_name', value: @organization_role_id %>
+
+          <hr class="mb-4">
+          <%= submit_tag 'Organization', class: "btn btn-primary btn-block", id: 'org_submit', data: {disable_with: "Sending.."} %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

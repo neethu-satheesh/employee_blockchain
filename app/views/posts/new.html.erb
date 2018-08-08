@@ -1,0 +1,119 @@
+<div class="container">
+  <div class="py-5 text-center">
+    <h2>Create Posts</h2>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 order-md-1">
+    <%= form_for @post, html: { id: "post"} ,  url: posts_path, method: :post do |f| %>
+        <div class="row">
+          <div class="col-md-12 mb-3">
+            <label for="title">Title <span class="text-danger">*</span></label>
+            <%= f.text_field :title, id: 'title' %>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="url">Url &nbsp; <span class="text-danger">*</span></label>
+          <%= f.text_field :url, id: 'url' %>
+        </div>
+
+
+        <hr class="mb-4">
+        <%= submit_tag 'Submit', class: "btn btn-primary btn-lg btn-block", id: 'post_submit', data: {disable_with: "Sending.."} %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+<script>
+ if (typeof web3 !== 'undefined') {
+      web3 = new Web3(web3.currentProvider);
+  } else {
+      // set the provider you want from Web3.providers
+      web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+  }
+
+  web3.eth.defaultAccount = web3.eth.accounts[0];
+
+  var TestingContract = web3.eth.contract([
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getInstructor",
+      "outputs": [
+        {
+          "name": "",
+          "type": "string"
+        },
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "name": "age",
+          "type": "uint256"
+        }
+      ],
+      "name": "Instructor",
+      "type": "event"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_fName",
+          "type": "string"
+        },
+        {
+          "name": "_age",
+          "type": "uint256"
+        }
+      ],
+      "name": "setInstructor",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ]);
+
+  var TestingC = TestingContract.at('0xf8a44429b4b20f169177bf7f0f50e01e13b8dfc3');
+  console.log(TestingC);
+
+  var instructorEvent = TestingC.Instructor();
+
+  instructorEvent.watch(function(error, result){
+      if (!error)
+          {
+              $("#loader").hide();
+              $("#instructor").html(result.args.name + ' (' + result.args.age + ' years old)');
+          } else {
+              $("#loader").hide();
+              console.log(error);
+          }
+  });
+
+  $("#button").click(function() {
+      TestingC.setInstructor($("#name").val(), $("#age").val());
+      $("#loader").show();
+  });
+
+
+    </script>
+

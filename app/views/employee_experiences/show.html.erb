@@ -1,0 +1,86 @@
+<div class="container">
+  <div class="py-5 text-center">
+    <h2>Show Employee Experience</h2>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 order-md-1">
+        <div class="row">
+          <div class="col-md-12 mb-3">
+            <label class="badge badge-secondary">Employee</label>
+            <%= @employee_experience.employee.name %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12 mb-3">
+            <label class="badge badge-secondary">Organization</label>
+            <%= @employee_experience.organization.name %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12 mb-3">
+            <label class="badge badge-secondary">Designation</label>
+            <%= @employee_experience.designation %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12 mb-3">
+            <label class="badge badge-secondary">Worked from</label>
+            <%= @employee_experience.start_date %>
+          </div>
+        </div>
+
+        <% if @employee_experience.is_currently_employed %>
+          <div class="row">
+            <div class="col-md-12 mb-3">
+              <label class="badge badge-secondary">Employment status</label>
+              You are currently employed here
+            </div>
+          </div>
+
+        <% else %>
+          <div class="row">
+            <div class="col-md-12 mb-3">
+              <label class="badge badge-secondary">Worked Till</label>
+              <%= @employee_experience.end_date %>
+            </div>
+          </div>
+        <% end %>
+
+        <div class="row">
+          <div class="col-md-12 mb-3">
+            <label class="badge badge-secondary">Reason to request</label>
+            <%= @employee_experience.request_reason %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12 mb-3">
+            <label class="badge badge-secondary">Status</label>
+            <%= @employee_experience.status %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12 mb-3">
+            <label class="badge badge-secondary">Block created</label>
+            <%= @employee_experience.block_created %>
+          </div>
+        </div>
+
+        <% if EmployeeExperiencePolicy.new(current_user, @employee_experience).create? %>
+          <%= button_to 'Approve', approval_employee_experience_path(@employee_experience), class: "btn btm-sm-pri btn-primary mrg-lft-2", method: :get %>
+
+          <%= button_to 'Reject', rejection_employee_experience_path(@employee_experience), class: "btn btm-sm-pri btn-primary mrg-lft-2", method: :get %>
+        <% end %>
+
+
+        <%= button_to 'Back', root_path, class: "btn btm-sm-pri btn-primary mrg-lft-2", method: :get %>
+
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,155 @@
+<main role="main">
+
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="display-3">Welcome to Blockchain Employee Experience Project</h1>
+      <p>The Employee Experience Project is to streamline the process of verifying the employee's work experiences and to retain it for further use. </p>
+
+      <p> The hiring process requires the verification of documents submitted by the prospective candidate. The candidate may have to carry/send the original or copies of certificates. This takes time and effort.  The certificates can be fake and there are call centres impersonating as the company that the person had worked on.  The employers verify the documents may be through agencies who investigate on the background jobs of people. Third party intervention of agencies may lead to corruption and may not be screening the candidate properly. Thus corporates end up hiring a person with fake certificates. There are companies who cannot afford to hire agents to do background screening. The agents may have a repository of the screened employees. They may be unneccesarily paid for the background verification for the candidate which they may have the information already. The companies can benefit by having the experience certificates of employee available.
+      </p>
+
+      <p>What can ease this process? </p>
+      <p> We can make the experience information generated through trust and is made available for all to  see this. Thus all can participate in validating the experience of an employee. This is made possible through a decentralised application and Blockchain technology.</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+      <% if DashboardPolicy.new(current_user).employee_create? %>
+        <div class="col-md-4">
+          <h2>Create Employee</h2>
+          <p> Employee information is created and is stored in blockchain</p>
+          <p>
+            <%= button_to 'Create Employee', new_employee_path, class: "btn btm-sm-pri btn-primary mrg-lft-2", method: :get %>
+          </p>
+        </div>
+
+        <% if @profile %>
+          <div class="col-md-4">
+            <h2>Show Employee</h2>
+            <p> Employee information is shown</p>
+            <p>
+              <%= button_to 'Show Employee', employee_path(@profile.id), class: "btn btm-sm-pri btn-primary mrg-lft-2", method: :get %>
+            </p>
+          </div>
+
+          <div class="col-md-4">
+            <h2>Create Experience</h2>
+            <p> Create your experience information</p>
+            <p>
+              <%= button_to 'Create Experience', new_employee_experience_path, class: "btn btm-sm-pri btn-primary mrg-lft-2", method: :get %>
+            </p>
+          </div>
+
+          <div class="col-md-4">
+            <h2>List Experiences</h2>
+            <p> See your experience information</p>
+            <p>
+              <%= button_to 'List Experiences', employee_experiences_path, class: "btn btm-sm-pri btn-primary mrg-lft-2", method: :get %>
+            </p>
+          </div>
+        <% end %>
+
+      <% end %>
+
+      <% if DashboardPolicy.new(current_user).organization_create? %>
+        <div class="col-md-4">
+          <h2>Create Organization</h2>
+          <p> Organization information is created and is stored in blockchain</p>
+          <p>
+            <%= button_to 'Create Organization', new_organization_path, class: "btn btm-sm-pri btn-primary mrg-lft-2", method: :get %>
+          </p>
+        </div>
+
+        <% if @profile %>
+          <div class="col-md-4">
+            <h2>Show Organization</h2>
+            <p> Organization information is shown</p>
+            <p>
+              <%= button_to 'Show Organization', organization_path(@profile.id), class: "btn btm-sm-pri btn-primary mrg-lft-2", method: :get %>
+            </p>
+          </div>
+
+          <div class="col-md-4">
+            <h2>Review Experiences</h2>
+            <p> Review the employee experience information</p>
+            <p>
+              <%= button_to 'List Experiences', employee_experiences_path, class: "btn btm-sm-pri btn-primary mrg-lft-2", method: :get %>
+            </p>
+          </div>
+        <% end %>
+
+      <% end %>
+
+      <% if DashboardPolicy.new(current_user).admin? %>
+
+        <div class="col-md-4">
+          <h2>List Employees</h2>
+          <p> Employee information is listed</p>
+          <p>
+            <%= button_to 'List Employees', employees_path, class: "btn btm-sm-pri btn-primary mrg-lft-2", method: :get %>
+          </p>
+        </div>
+
+        <div class="col-md-4">
+          <h2>List Organizations</h2>
+          <p> Employee information is listed</p>
+          <p>
+            <%= button_to 'List Organizations', organizations_path, class: "btn btm-sm-pri btn-primary mrg-lft-2", method: :get %>
+          </p>
+        </div>
+      <% end %>
+
+      <div class="col-md-4">
+        <h2>Search Blockchain for an employee</h2>
+        <p> Employee information is listed</p>
+
+        <%= form_for :employee, html: { id: "employee"} ,  url: blockchain_employee_search_employees_path, method: :post do |f| %>
+
+          <div class="col-md-12 mb-3">
+            <label for="email">Email <span class="text-danger">*</span></label>
+            <%= f.email_field :email, id: 'email' %>
+          </div>
+
+          <%= button_to 'Blockchain search employee', blockchain_employee_search_employees_path, class: "btn btm-sm-pri btn-primary mrg-lft-2", method: :post %>
+        <% end %>
+      </div>
+
+
+      <div class="col-md-4">
+        <h2>Search Blockchain for employee experience</h2>
+        <p> Employee information is listed</p>
+
+        <%= form_for :employee_experience, html: { id: "employee_experience"} ,  url: blockchain_experience_search_employee_experiences_path, method: :post do |f| %>
+
+          <div class="col-md-12 mb-3">
+            <label for="email">Email <span class="text-danger">*</span></label>
+            <%= f.email_field :email, id: 'email' %>
+          </div>
+
+          <%= button_to 'Blockchain search employee experience', blockchain_experience_search_employee_experiences_path, class: "btn btm-sm-pri btn-primary mrg-lft-2", method: :post %>
+        <% end %>
+      </div>
+
+      <div class="col-md-4">
+        <h2>List Posts</h2>
+        <p> Post information is shown</p>
+        <p>
+          <%= button_to 'List Posts', posts_path, class: "btn btm-sm-pri btn-primary mrg-lft-2", method: :get %>
+        </p>
+      </div>
+
+
+    </div>
+
+    <hr>
+
+  </div> <!-- /container -->
+
+</main>
+
+<footer class="container">
+  <p>&copy; Company 2017-2018</p>
+</footer>

@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="py-5 text-center">
+    <h2>Create Profile</h2>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 order-md-1">
+      <%= form_for @employee, html: { id: "employee"} ,  url: employees_path, method: :post do |f| %>
+        <div class="row">
+          <div class="col-md-12 mb-3">
+            <label for="name">Name <span class="text-danger">*</span></label>
+            <%= f.text_field :name, id: 'name' %>
+          </div>
+
+          <div class="col-md-12 mb-3">
+            <label for="email">Email <span class="text-danger">*</span></label>
+            <%= f.email_field :email, id: 'email' %>
+          </div>
+
+          <div class="col-md-12 mb-3">
+            <label for="phone_number">Phone Number </label>
+            <%= f.text_field :phone_number, id: 'phone_number' %>
+          </div>
+
+          <div class="col-md-12 mb-3">
+            <label for="career_start_date">Career Start Date</label>
+            <%= f.text_field :career_start_date, id: 'career_start_date' %>
+          </div>
+
+          <div class="col-md-12 mb-3">
+            <label for="address">Address </label>
+            <%= f.text_area :address, id: 'address' %>
+          </div>
+        </div>
+
+        <hr class="mb-4">
+        <%= submit_tag 'Submit', class: "btn btn-primary btn-block", id: 'employee_submit', data: {disable_with: "Sending.."} %>
+      <% end %>
+    </div>
+  </div>
+</div>

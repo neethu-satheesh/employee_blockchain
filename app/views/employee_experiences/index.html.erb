@@ -1,0 +1,43 @@
+<div class = "kaminari">
+  <%= paginate @employee_experiences %>
+</div>
+
+<table class="table table-hover table-bordered table-striped">
+  <thead  class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Employee</th>
+      <th scope="col">Organization</th>
+      <th scope="col">Designation</th>
+      <th scope="col">Worked from</th>
+      <th scope="col">Worked till</th>
+      <th scope="col">Employment Status</th>
+      <th scope="col">Reason to request</th>
+      <th scope="col">Status</th>
+      <th scope="col">Block created</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @employee_experiences.each do |employee_experience| %>
+      <tr>
+        <td scope="row"><%=  employee_experience.id %></td>
+        <td><%= employee_experience.employee.name %></td>
+        <td><%= employee_experience.organization.name %></td>
+        <td><%= employee_experience.designation %></td>
+        <td><%= employee_experience.start_date %></td>
+        <td><%= employee_experience.end_date %></td>
+        <td><%= employee_experience.is_currently_employed %></td>
+        <td><%= employee_experience.request_reason %></td>
+        <td><%= employee_experience.status %></td>
+        <td><%= employee_experience.block_created %></td>
+
+        <td><%= button_to 'Show', employee_experience_path(employee_experience), class: "btn btm-sm-pri btn-primary mrg-lft-2", method: :get %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<%= button_to 'Back', root_path, class: "btn btm-sm-pri btn-primary mrg-lft-2", method: :get %>

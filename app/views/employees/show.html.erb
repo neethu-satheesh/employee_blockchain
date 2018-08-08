@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="py-5 text-center">
+    <h2>Show Employee</h2>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 order-md-1">
+        <div class="row">
+          <div class="col-md-12 mb-3">
+            <label class="badge badge-secondary">Name</label>
+            <%= @employee.name %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12 mb-3">
+            <label class="badge badge-secondary">Email</label>
+            <%= @employee.email %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12 mb-3">
+            <label class="badge badge-secondary">Phone Number</label>
+            <%= @employee.phone_number %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12 mb-3">
+            <label class="badge badge-secondary">Career Start Date</label>
+            <%= @employee.career_start_date %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12 mb-3">
+            <label class="badge badge-secondary">Address</label>
+            <%= @employee.address %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12 mb-3">
+            <label class="badge badge-secondary">Block created</label>
+            <%= @employee.block_created %>
+          </div>
+        </div>
+
+
+        <%= button_to 'Back', root_path, class: "btn btm-sm-pri btn-primary mrg-lft-2", method: :get %>
+
+        <%= button_to 'Retrieve from Blockchain', retrieve_from_blockchain_employee_path(@employee), class: "btn btm-sm-pri btn-primary mrg-lft-2", method: :post %>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="py-5 text-center">
+    <h2>Show Post</h2>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 order-md-1">
+        <div class="row">
+          <div class="col-md-12 mb-3">
+            <label class="badge badge-secondary">Request Type</label>
+            <%= @post.request_type %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12 mb-3">
+            <label class="badge badge-secondary">Identifier</label>
+            <%= @post.identifier %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12 mb-3">
+            <label class="badge badge-secondary">Request</label>
+            <%= @post.request %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12 mb-3">
+            <label class="badge badge-secondary">Created On</label>
+            <%= @post.created_at %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12 mb-3">
+            <label class="badge badge-secondary">Response</label>
+            <%= @post.response %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12 mb-3">
+            <label class="badge badge-secondary">Blockchain Response</label>
+            <%= @post.blockchain_response %>
+          </div>
+        </div>
+
+
+        <%= button_to 'Back', posts_path, class: "btn btm-sm-pri btn-primary mrg-lft-2", method: :get %>
+
+      </form>
+    </div>
+  </div>
+</div>

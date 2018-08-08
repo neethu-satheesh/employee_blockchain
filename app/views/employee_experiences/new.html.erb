@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="py-5 text-center">
+    <h2>Create Employee Experience</h2>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 order-md-1">
+      <%= form_for @employee_experience, html: { id: "employee"} ,  url: employee_experiences_path, method: :post do |f| %>
+        <div class="row">
+          <div class="col-md-12 mb-3">
+            <label for="name">Organization <span class="text-danger">*</span></label>
+            <%= f.select :organization_id, options_for_select(@organization_list), { prompt: "Search Organization...."}, { id: 'org_select' } %>
+          </div>
+
+          <div class="col-md-12 mb-3">
+            <label for="email">Designation <span class="text-danger">*</span></label>
+            <%= f.text_field :designation, id: 'designation' %>
+          </div>
+
+          <div class="col-md-12 mb-3">
+            <label for="start_date">Worked from  <span class="text-danger">*</span></label>
+            <%= f.text_field :start_date, id: 'start_date' %>
+          </div>
+
+          <div class="col-md-12 mb-3">
+            <label for="is_current_employee">Are you still employed here?</label>
+            <%= f.select :is_currently_employed, options_for_select({'yes' => true, 'no' => false}), { prompt: "Please Select...."}, { id: 'is_currently_employed' } %>
+          </div>
+
+          <div class="col-md-12 mb-3">
+            <label for="end_date">Worked Till </label>
+            <%= f.text_field :end_date, id: 'end_date' %>
+          </div>
+
+          <div class="col-md-12 mb-3">
+            <label for="request_reason">Reason to request </label>
+            <%= f.text_field :request_reason, id: 'request_reason' %>
+          </div>
+        </div>
+
+        <hr class="mb-4">
+        <%= submit_tag 'Submit', class: "btn btn-primary btn-block", id: 'employee_experience_submit', data: {disable_with: "Sending.."} %>
+      <% end %>
+    </div>
+  </div>
+</div>

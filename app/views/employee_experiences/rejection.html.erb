@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="py-5 text-center">
+    <h2>Review Employee Experience</h2>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 order-md-1">
+        <% if EmployeeExperiencePolicy.new(current_user, @employee_experience).create? %>
+          <%= form_for @employee_experience, html: { id: "employee_experience"} ,  url: reject_employee_experience_path(@employee_experience), method: :post do |f| %>
+
+          <div class="row">
+          <div class="col-md-12 mb-3">
+            <label for="confirmed_person_name">Rejecting Person Name <span class="text-danger">*</span></label>
+            <%= f.text_field :confirmed_person_name, id: 'confirmed_person_name' %>
+          </div>
+
+          <div class="col-md-12 mb-3">
+            <label for="confirmation_note">Review Note</label>
+            <%= f.text_field :confirmation_note, id: 'confirmation_note' %>
+          </div>
+        </div>
+
+        <hr class="mb-4">
+
+        <%= submit_tag 'Reject', class: "btn btn-primary", id: 'employee_experience_submit', data: {disable_with: "Sending.."} %>
+      <% end %>
+    <% end %>
+
+
+        <%= button_to 'Back', root_path, class: "btn btm-sm-pri btn-primary mrg-lft-2", method: :get %>
+
+      </form>
+    </div>
+  </div>
+</div>
